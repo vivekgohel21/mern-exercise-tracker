@@ -3,6 +3,7 @@ import axios from 'axios';
 
 const CreateUser = () => {
   const [username, setUsername] = useState('');
+  const API_URL = 'https://mern-exercise-tracker-backend-fz71.onrender.com';
 
   const onChangeUsername = (e) => {
     setUsername(e.target.value);
@@ -15,7 +16,7 @@ const CreateUser = () => {
 
     console.log(user);
 
-    axios.post('http://localhost:5000/users/add', user)
+    axios.post(API_URL + '/users/add', user)
       .then(res => console.log(res.data));
 
     setUsername('');

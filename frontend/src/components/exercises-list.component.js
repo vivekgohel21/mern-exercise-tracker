@@ -22,9 +22,10 @@ function Exercise({ exercise, deleteExercise }) {
 
 function ExercisesList() {
   const [exercises, setExercises] = useState([]);
+  const API_URL = 'https://mern-exercise-tracker-backend-fz71.onrender.com';
 
   useEffect(() => {
-    axios.get('http://localhost:5000/exercises/')
+    axios.get(API_URL + '/exercises/')
       .then(response => {
         const exercises = response.data.exercises;
         setExercises(exercises);
@@ -35,7 +36,7 @@ function ExercisesList() {
   }, []);
 
   function deleteExercise(id) {
-    axios.delete('http://localhost:5000/exercises/' + id)
+    axios.delete(API_URL + '/exercises/' + id)
       .then(response => { console.log(response.data) });
 
     setExercises(exercises.filter(el => el._id !== id));

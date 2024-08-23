@@ -12,9 +12,10 @@ const EditExercise = () => {
   const [duration, setDuration] = useState(0);
   const [date, setDate] = useState(new Date());
   const [users, setUsers] = useState([]);
+  const API_URL = 'https://mern-exercise-tracker-backend-fz71.onrender.com';
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/exercises/${id}`)
+    axios.get(API_URL + '/exercises/' + id)
       .then(response => {
         const exercise = response.data.exercise;
         setUsername(exercise.username);
@@ -26,7 +27,7 @@ const EditExercise = () => {
         console.log(error);
       });
 
-    axios.get('http://localhost:5000/users/')
+    axios.get(API_URL + '/users/')
       .then(response => {
         const users = response.data.users;
         if (users.length > 0) {
@@ -50,7 +51,7 @@ const EditExercise = () => {
 
     console.log(exercise);
 
-    axios.put(`http://localhost:5000/exercises/update/${id}`, exercise)
+    axios.put(API_URL + 'http://localhost:5000/exercises/update/' + id, exercise)
       .then(res => console.log(res.data));
 
     // history.push('/');
