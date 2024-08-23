@@ -19,7 +19,6 @@ const CreateExercise = () => {
           setUsername(users[0].username);
         }
         console.log(users);
-        // console.log(response.data.data);
       })
       .catch((error) => {
         console.log(error);
